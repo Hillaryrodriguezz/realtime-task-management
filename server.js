@@ -122,9 +122,9 @@ wss.on('connection', async (ws, req) => {
     // Fetch all tasks with their comments
     const tasks = await Task.findAll({
       include: [
-        { model: User, attributes: ['id', 'username'] },
+        { model: User, as: 'assignee', attributes: ['id', 'username'] }, // Specify alias 'assignee'
         { 
-          model: Comment,
+          model: Comment, as: 'comments', // Specify alias 'comments'
           include: [{ model: User, attributes: ['id', 'username'] }]
         }
       ]
