@@ -320,7 +320,7 @@ const PORT = process.env.PORT || 3000;
 async function startServer() {
   try {
     // Sync models with database
-    await sequelize.sync({ alter: true });
+    await sequelize.sync({ force: true }); // Use force: true for development
     console.log("Database synchronized");
     
     // Start the server
